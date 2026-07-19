@@ -1,0 +1,42 @@
+-- Products
+CREATE TABLE products (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    description TEXT,
+    price REAL NOT NULL,
+    category TEXT,
+    image_url TEXT,
+    stock INTEGER DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Users
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email TEXT UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    full_name TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Orders
+CREATE TABLE orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    total REAL NOT NULL,
+    status TEXT DEFAULT 'pending',
+    shipping_address TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Order Items
+CREATE TABLE order_items (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    order_id INTEGER,
+    product_id INTEGER,
+    quantity INTEGER,
+    price_at_time REAL,
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);

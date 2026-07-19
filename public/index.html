@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market — E-Commerce</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">market</a>
+            <div class="search-box">
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M11.5 3C16.1944 3 20 6.80558 20 11.5C20 13.523 19.2933 15.381 18.1132 16.8404L21.1364 19.8636C21.4879 20.2151 21.4879 20.7849 21.1364 21.1364C20.7849 21.4879 20.2151 21.4879 19.8636 21.1364L16.8404 18.1132C15.381 19.2933 13.523 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3ZM11.5 18.2C15.2003 18.2 18.2 15.2003 18.2 11.5C18.2 7.79969 15.2003 4.8 11.5 4.8C7.79969 4.8 4.8 7.79969 4.8 11.5C4.8 15.2003 7.79969 18.2 11.5 18.2Z" fill="currentColor"/>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" id="profileBtn" title="Account">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M11.9997 12.8779C16.0197 12.878 19.4393 15.3848 20.7048 18.8828C21.0812 19.9234 20.2782 20.8962 19.2038 21.0137L18.9861 21.0264H5.0134L4.79562 21.0137C3.7213 20.8961 2.91743 19.9233 3.29367 18.8828C4.55905 15.3847 7.9797 12.8781 11.9997 12.8779ZM11.9997 14.6777C8.84467 14.6779 6.17462 16.5794 5.09152 19.2256H18.9079C17.8248 16.5793 15.1549 14.6778 11.9997 14.6777ZM12.2312 3.00586C14.6088 3.1264 16.4997 5.09239 16.4997 7.5L16.4939 7.73145C16.3734 10.1091 14.4073 11.9999 11.9997 12C9.59225 11.9998 7.62604 10.109 7.50558 7.73145L7.49973 7.5C7.49973 5.01485 9.51462 3.00021 11.9997 3L12.2312 3.00586ZM11.9997 4.7998C10.5087 4.80001 9.29953 6.00896 9.29953 7.5C9.29953 8.99104 10.5087 10.2 11.9997 10.2002C13.4908 10.2001 14.6999 8.99112 14.6999 7.5C14.6999 6.00888 13.4908 4.79989 11.9997 4.7998Z" fill="currentColor"/>
+                    </svg>
+                </button>
+                <button class="icon-btn cart-btn" id="cartBtn" title="Cart">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.711 2.52188C17.2215 2.43557 16.7547 2.76242 16.6684 3.25192L15.9899 7.1L9.97778 7.1L10.6011 3.56521C10.6874 3.07571 10.3605 2.60892 9.87102 2.5226C9.38151 2.43629 8.91472 2.76314 8.82841 3.25265L8.15002 7.1H4.00001C3.50295 7.1 3.10001 7.50294 3.10001 8C3.10001 8.49705 3.50295 8.9 4.00001 8.9H7.83263L6.7394 15.1H3.00001C2.50295 15.1 2.10001 15.5029 2.10001 16C2.10001 16.4971 2.50295 16.9 3.00001 16.9H6.42201L5.78982 20.4853C5.70351 20.9748 6.03036 21.4416 6.51987 21.5279C7.00937 21.6142 7.47617 21.2874 7.56248 20.7979L8.24978 16.9H14.2619L13.6297 20.4853C13.5434 20.9748 13.8702 21.4416 14.3597 21.5279C14.8492 21.6142 15.316 21.2874 15.4023 20.7979L16.0896 16.9H20C20.4971 16.9 20.9 16.4971 20.9 16C20.9 15.5029 20.4971 15.1 20 15.1H16.407L17.5002 8.9H21C21.4971 8.9 21.9 8.49705 21.9 8C21.9 7.50294 21.4971 7.1 21 7.1H17.8176L18.441 3.56449C18.5273 3.07499 18.2005 2.60819 17.711 2.52188ZM15.6725 8.9L14.5792 15.1L8.56717 15.1L9.6604 8.9L15.6725 8.9Z" fill="currentColor"/>
+                    </svg>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="category-bar">
+        <div class="container" id="categoryList"></div>
+    </nav>
+
+    <main class="container">
+        <div class="product-grid" id="productGrid"></div>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="drawer-header">
+            <h2>Your cart</h2>
+            <button class="icon-btn" id="closeDrawer">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M17.9542 4.77253C18.3056 4.42106 18.8761 4.42106 19.2276 4.77253C19.579 5.12401 19.579 5.69452 19.2276 6.04597L13.2735 12.0001L19.2276 17.9542C19.5791 18.3056 19.5791 18.8761 19.2276 19.2276C18.8761 19.5791 18.3056 19.5791 17.9542 19.2276L12.0001 13.2735L6.04595 19.2276C5.69451 19.5791 5.12399 19.579 4.77252 19.2276C4.42104 18.8761 4.42104 18.3056 4.77252 17.9542L10.7266 12.0001L4.77252 6.04597C4.42104 5.6945 4.42104 5.124 4.77252 4.77253C5.12399 4.42107 5.69448 4.42106 6.04595 4.77253L12.0001 10.7266L17.9542 4.77253Z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body" id="drawerBody">
+            <div class="empty-cart">Your cart is empty.</div>
+        </div>
+        <div class="drawer-footer" id="drawerFooter" style="display:none">
+            <div class="total-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+            <div class="total-row"><span>Shipping</span><span>$5.00</span></div>
+            <div class="total-row grand"><span>Total</span><span id="grandTotal">$0.00</span></div>
+            <button class="checkout-btn" id="checkoutBtn">Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal">
+            <h2>Checkout</h2>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label>Full name</label>
+                    <input type="text" id="shipName" placeholder="Jane Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="shipEmail" placeholder="jane@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Shipping address</label>
+                    <input type="text" id="shipAddress" placeholder="123 Market St, City" required>
+                </div>
+                <div class="form-group">
+                    <label>Card number</label>
+                    <input type="text" id="shipCard" placeholder="4242 4242 4242 4242" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelCheckout">Cancel</button>
+                    <button type="submit" class="btn-primary">Place Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
